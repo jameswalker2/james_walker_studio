@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <!-- Makes the page fit phone screens (and go edge to edge on iPhones) -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>James Walker Studio</title>
+
+    <!-- Font from Google Fonts (needs internet) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;800&display=swap"
+      rel="stylesheet" />
+
+    <!-- Your styles live in style.css -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- SLIDE 1: the hero. Everything is stacked on top of each other
+       (layers) and positioned inside this one section. -->
+    <section class="hero">
+      <!-- Layer: header (logo left, Portfolio center, button right) -->
+      <header>
+        <a class="logo" href="#">James Walker Studio</a>
+        <a class="center" href="#">Portfolio</a>
+        <a class="book" href="#">Book a session</a>
+      </header>
+
+      <!-- Layer: the 3D camera. It starts EMPTY on purpose:
+         camera.js builds all the pieces and puts them inside #model. -->
+      <div class="stage" aria-hidden="true">
+        <div class="rig">
+          <div class="cam">
+            <div id="model"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Layer: soft shadow under the camera -->
+      <div class="floor"></div>
+
+      <!-- Layer: big title in front of the camera -->
+      <div class="title">
+        <h1>
+          <span>Frames</span>
+          <span class="ghost">that stay</span>
+        </h1>
+      </div>
+
+      <!-- Layer: tagline + services -->
+      <div class="sub">
+        <p>Want it to last? <b>You're in the right place.</b></p>
+        <small>Weddings · Portraits · Birthdays</small>
+      </div>
+
+      <!-- Layer: film grain on top of everything -->
+      <div class="grain"></div>
+
+      <!-- Layer: bottom row -->
+      <div class="foot">
+        <span>Photography &amp; Videography</span>
+        <div class="scroll"><span>Scroll</span><em></em></div>
+        <span>&copy; 2026</span>
+      </div>
+    </section>
+
+    <!-- Your JavaScript (builds the camera). Loaded last so the page exists first. -->
+    <script src="camera.js"></script>
+  </body>
+</html>
