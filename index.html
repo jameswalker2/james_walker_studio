@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <p>Hi</p>
     <!-- SLIDE 1: the hero. Everything is stacked on top of each other
        (layers) and positioned inside this one section. -->
     <section class="hero">
@@ -27,6 +26,18 @@
         <a class="logo" href="#">James Walker Studio</a>
         <a class="center" href="#">Portfolio</a>
         <a class="book" href="#">Book a session</a>
+
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+          <span></span><span></span>
+        </button>
+      </header>
+      
+      <!-- the full-screen menu that the icon opens -->
+      <nav class="menu" id="menu" aria-label="Main menu">
+        <a href="#">Work</a>
+        <a href="#">About me</a>
+        <a href="#">Booking</a>
+      </nav>
       </header>
 
       <!-- Layer: the 3D camera. It starts EMPTY on purpose:
@@ -69,5 +80,6 @@
 
     <!-- Your JavaScript (builds the camera). Loaded last so the page exists first. -->
     <script src="camera.js"></script>
+    <script src="menu.js"></script>
   </body>
 </html>
