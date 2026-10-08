@@ -5,24 +5,10 @@
 :root {
   --s: 1.25;
 }
-@media (max-width: 1024px) {
-  :root {
-    --s: 1;
-  }
-}
-@media (max-width: 680px) {
-  :root {
-    --s: 0.72;
-  }
-}
-@media (max-height: 640px) {
-  :root {
-    --s: 0.6;
-  }
-} /* short screens, phone sideways */
 
 :root {
   --s: 1.25;
+  --c: 1.1;
   --bg: #050505;
   --fg: #f2f2f0; /* main text color */
   --muted: #8c8c88; /* gray text */
@@ -43,14 +29,19 @@
 html,
 body {
   height: 100dvh;
-  height: 100vh;
+  /* height: 100vh; */
   margin: 0;
 }
 
 body {
   background: var(--bg);
   color: var(--fg);
-  font-family: "Inter", system-ui, -apple-system, "Helvetica Neue", Arial,
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    "Helvetica Neue",
+    Arial,
     sans-serif;
   overflow: hidden; /* no scrollbar for now (slide 2 will change this) */
 }
@@ -119,7 +110,7 @@ header {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 20;
+  z-index: 40;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
@@ -152,7 +143,7 @@ header a {
   height: 1px;
   background: var(--fg);
   transform: scaleX(0);
-  transform-origin: left;
+  transform-origin: bottom;
   transition: transform 0.35s;
 }
 .center:hover::after {
@@ -164,7 +155,9 @@ header a {
   border: 1px solid var(--line);
   padding: 10px 18px;
   border-radius: 999px; /* pill shape */
-  transition: background 0.25s, color 0.25s;
+  transition:
+    background 0.25s,
+    color 0.25s;
 }
 .book:hover {
   background: var(--fg);
@@ -251,7 +244,7 @@ header a {
   position: relative;
   transform-style: preserve-3d;
   /* tilt a little to see the top + make the camera bigger/smaller */
-  transform: rotateX(-15deg);
+  transform: rotateX(-15deg) scale(var(--c));
 }
 .cam {
   position: absolute;
@@ -307,7 +300,8 @@ header a {
 
 /* Materials (what the surfaces look like) */
 .rubber {
-  background: repeating-linear-gradient(
+  background:
+    repeating-linear-gradient(
       45deg,
       rgba(255, 255, 255, 0.035) 0 2px,
       transparent 2px 5px
@@ -387,7 +381,7 @@ header a {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 40;
+  z-index: 20;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   justify-content: space-between;
@@ -449,7 +443,9 @@ header a {
   right: 13px;
   height: 1.5px;
   background: var(--fg);
-  transition: transform 0.3s, top 0.3s;
+  transition:
+    transform 0.3s,
+    top 0.3s;
 }
 .menu-btn span:nth-child(1) {
   top: 18px;
@@ -476,12 +472,14 @@ header a {
   justify-content: center;
   align-items: center;
   gap: 6px;
-  background: rgba(5, 5, 5, 0.92);
+  background: rgba(0, 0, 0, 0.92);
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.35s, visibility 0.35s;
+  transition:
+    opacity 0.35s,
+    visibility 0.35s;
 }
 .menu.open {
   opacity: 1;
@@ -497,7 +495,9 @@ header a {
   font-size: clamp(40px, 12vw, 64px);
   opacity: 0;
   transform: translateY(16px);
-  transition: opacity 0.4s, transform 0.4s;
+  transition:
+    opacity 0.4s,
+    transform 0.4s;
 }
 .menu.open a {
   opacity: 1;
@@ -510,7 +510,7 @@ header a {
   transition-delay: 0.12s;
 }
 
-@media (min-width: 681px) {
+@media (min-width: 800px) {
   .menu {
     display: none;
   }
@@ -533,25 +533,59 @@ header a {
    8. PHONE VERSION
    Rules inside @media only apply on screens 680px wide or less.
    ========================================================== */
-@media (max-width: 800px) {
-  .rig {
-    --s: 0.72;
+
+@media (max-width: 1024px) {
+  :root {
+    --s: 1;
+    --c: 0.9;
   }
+}
+
+@media (max-width: 800px) {
+  :root {
+    --s: 1.1;
+    --c: 0.7;
+  }
+
   header {
+    grid-template-columns: 1fr auto; /* logo | icon */
     font-size: 11px;
   }
-  .foot > span:first-child,
-  .foot > span:last-child {
+  header .logo {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  header .center,
+  header .book {
     display: none;
   }
-  .floor {
-    top: calc(50% + 92px);
-    width: 340px;
-    margin-left: -170px;
+  header .menu-btn {
+    display: block;
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+  }
+
+  /* bottom row: side texts hide, "Scroll" stays centered */
+  .foot > :nth-child(1),
+  .foot > :nth-child(3) {
+    display: none;
   }
 
   .sub {
     bottom: calc(19% + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+@media (max-height: 640px) {
+  :root {
+    --s: 0.6;
+  }
+  .sub small {
+    display: none;
+  }
+  .sub {
+    bottom: calc(10% + env(safe-area-inset-bottom, 0px));
   }
 }
 

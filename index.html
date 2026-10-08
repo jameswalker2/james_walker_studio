@@ -1,9 +1,7 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-
-    <!-- Makes the page fit phone screens (and go edge to edge on iPhones) -->
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -17,41 +15,49 @@
     <!-- Your styles live in style.css -->
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
     <!-- SLIDE 1: the hero. Everything is stacked on top of each other
-       (layers) and positioned inside this one section. -->
+      (layers) and positioned inside this one section. -->
     <section class="hero">
       <!-- Layer: header (logo left, Portfolio center, button right) -->
       <header>
+        <!-- <img src="" alt=""> -->
         <a class="logo" href="#">James Walker Studio</a>
         <a class="center" href="#">Portfolio</a>
         <a class="book" href="#">Book a session</a>
 
-        <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="menu">
           <span></span><span></span>
         </button>
       </header>
-      
+
       <!-- the full-screen menu that the icon opens -->
       <nav class="menu" id="menu" aria-label="Main menu">
         <a href="#">Work</a>
         <a href="#">About me</a>
         <a href="#">Booking</a>
       </nav>
-      </header>
 
       <!-- Layer: the 3D camera. It starts EMPTY on purpose:
-         camera.js builds all the pieces and puts them inside #model. -->
-      <div class="stage" aria-hidden="true">
-        <div class="rig">
-          <div class="cam">
-            <div id="model"></div>
+        camera.js builds all the pieces and puts them inside #model. -->
+      <div>
+        <div class="stage" aria-hidden="true">
+          <div class="rig">
+            <div class="cam">
+              <div id="model"></div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Layer: soft shadow under the camera -->
-      <div class="floor"></div>
+        <!-- Layer: soft shadow under the camera -->
+        <div class="floor"></div>
+      </div>
 
       <!-- Layer: big title in front of the camera -->
       <div class="title">
